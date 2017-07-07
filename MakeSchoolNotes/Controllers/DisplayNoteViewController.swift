@@ -17,7 +17,7 @@ class DisplayNoteViewController: UIViewController {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "save" {
-            // if note exists, update title and content
+             // if note exists, update title and content
             let note = self.note ?? CoreDataHelper.newNote()
             note.title = noteTitleTextField.text ?? ""
             note.content = noteContentTextView.text ?? ""
