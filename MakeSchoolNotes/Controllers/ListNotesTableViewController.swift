@@ -8,14 +8,15 @@
 
 import UIKit
 
+
 class ListNotesTableViewController: UITableViewController {
     var notes = [Note]() {
         didSet {
-            notes.sort(by: { $0.modificationTime?.compare($1.modificationTime! as Date) == .orderedDescending }) // top
+            notes.sort(by: { $0.modificationTime?.compare($1.modificationTime! as Date) == .orderedDescending })
             tableView.reloadData()
         }
     }
-    
+
     @IBAction func unwindToListNotesViewController(_ segue: UIStoryboardSegue){
         self.notes = CoreDataHelper.retrieveNotes()
     }
@@ -28,7 +29,7 @@ class ListNotesTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return notes.count
     }
-    
+
     // 2
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "listNotesTableViewCell", for: indexPath) as! ListNotesTableViewCell
@@ -75,3 +76,4 @@ class ListNotesTableViewController: UITableViewController {
             notes = CoreDataHelper.retrieveNotes()
         }
     }}
+
